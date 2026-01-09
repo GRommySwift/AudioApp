@@ -8,6 +8,7 @@
 import Foundation
 
 struct AudioMetrics {
+    let fileName: String
     var duration: TimeInterval
     let sampleRate: Double
     let channels: UInt32

@@ -16,6 +16,7 @@ final class AudioAnalyzer {
             let sampleRate = format.sampleRate
             let channels = format.channelCount
             let frameLength = Int(buffer.frameLength)
+            let fileName = file.url.lastPathComponent
             let duration = Double(file.length) / sampleRate
             
             guard let channelData = buffer.floatChannelData else {
@@ -45,14 +46,15 @@ final class AudioAnalyzer {
             let dynamicRange = peak - rms
             
             return AudioMetrics(
+                fileName: fileName,
                 duration: duration,
-                sampleRate: sampleRate,
+                sampleRate: sampleRate / 1000,
                 channels: channels,
                 rms: rms,
                 peak: peak,
-                silenceRatio: silenceRatio,
-                zeroCrossingRate: crossingRate,
-                dcOffset: dcOffset,
+                silenceRatio: silenceRatio * 100,
+                zeroCrossingRate: crossingRate * 100,
+                dcOffset: dcOffset * 100,
                 dynamicRange: dynamicRange
             )
         }.value

@@ -1,5 +1,5 @@
 //
-//  AudioAppApp.swift
+//  AudioApp.swift
 //  AudioApp
 //
 //  Created by Roman on 06/01/2026.
